@@ -1,7 +1,5 @@
 name: build & test
 
-on: []
-
 jobs:
   build:
 

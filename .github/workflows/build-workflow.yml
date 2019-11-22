@@ -1,6 +1,6 @@
 name: build & test
 
-on: [release]
+on: [push]
 
 jobs:
   build:

@@ -3,12 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Ahmet KUCUKOGLU</Authors>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Description>Monitoring for Quartz Scheduled Jobs</Description>
+    <RepositoryUrl>https://github.com/ahmetkucukoglu/quartzjob-monitoring</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="QuartzJobMonitoring.Shared" Version="1.0.2" />
+    <PackageReference Include="QuartzJobMonitoring.Shared" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

@@ -13,8 +13,8 @@
     <PackageReference Include="Xunit.Priority" Version="1.1.6" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
-    <PackageReference Include="QuartzJobMonitoring" Version="1.0.11" />
-    <PackageReference Include="QuartzJobMonitoring.InMemory" Version="1.0.2" />
+    <PackageReference Include="QuartzJobMonitoring" Version="1.0.12" />
+    <PackageReference Include="QuartzJobMonitoring.InMemory" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

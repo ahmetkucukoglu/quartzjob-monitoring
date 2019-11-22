@@ -18,3 +18,15 @@ jobs:
     
     - name: Test
       run: dotnet test QuartzJobMonitoring.Test/QuartzJobMonitoring.Test.csproj
+    
+    - name: Pack Shared
+      run: dotnet pack QuartzJobMonitoring.Shared/QuartzJobMonitoring.Shared.csproj --output nupkgs
+    
+    - name: Pack QuartzJobMonitoring
+      run: dotnet pack QuartzJobMonitoring/QuartzJobMonitoring.csproj --output nupkgs
+      
+    - name: Pack InMemory
+      run: dotnet pack QuartzJobMonitoring.InMemory/QuartzJobMonitoring.InMemory.csproj --output nupkgs
+
+    - name: Push Packs
+      run: dotnet nuget push nupkgs/ -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json

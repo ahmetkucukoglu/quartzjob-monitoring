@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{48AA4909-D349-4433-A11E-FE74993D0CCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{EB7171E2-2D76-415A-997C-A0D12903A097}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuartzJobMonitoring", "QuartzJobMonitoring\QuartzJobMonitoring.csproj", "{83AC35DE-60BF-4EF1-BC5A-BA9A8AE990E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuartzJobMonitoring.Shared", "QuartzJobMonitoring.Shared\QuartzJobMonitoring.Shared.csproj", "{EC75B15B-E764-4D31-BE22-C6FDC7FA9681}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuartzJobMonitoring.InMemory", "QuartzJobMonitoring.InMemory\QuartzJobMonitoring.InMemory.csproj", "{740D0E64-811F-4B91-80ED-1B34F0AE3DE7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuartzJobMonitoring.Sample", "QuartzJobMonitoring.Sample\QuartzJobMonitoring.Sample.csproj", "{99FC0CA1-6265-4D55-A735-F9B16438636F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D36AAE35-61DF-415E-AB0B-D99B6D93CD70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzJobMonitoring.Test", "QuartzJobMonitoring.Test\QuartzJobMonitoring.Test.csproj", "{A550ACEB-CCF6-40FC-B253-AEA335C12532}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83AC35DE-60BF-4EF1-BC5A-BA9A8AE990E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83AC35DE-60BF-4EF1-BC5A-BA9A8AE990E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83AC35DE-60BF-4EF1-BC5A-BA9A8AE990E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83AC35DE-60BF-4EF1-BC5A-BA9A8AE990E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC75B15B-E764-4D31-BE22-C6FDC7FA9681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC75B15B-E764-4D31-BE22-C6FDC7FA9681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC75B15B-E764-4D31-BE22-C6FDC7FA9681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC75B15B-E764-4D31-BE22-C6FDC7FA9681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740D0E64-811F-4B91-80ED-1B34F0AE3DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740D0E64-811F-4B91-80ED-1B34F0AE3DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740D0E64-811F-4B91-80ED-1B34F0AE3DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740D0E64-811F-4B91-80ED-1B34F0AE3DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99FC0CA1-6265-4D55-A735-F9B16438636F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FC0CA1-6265-4D55-A735-F9B16438636F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FC0CA1-6265-4D55-A735-F9B16438636F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FC0CA1-6265-4D55-A735-F9B16438636F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A550ACEB-CCF6-40FC-B253-AEA335C12532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A550ACEB-CCF6-40FC-B253-AEA335C12532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A550ACEB-CCF6-40FC-B253-AEA335C12532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A550ACEB-CCF6-40FC-B253-AEA335C12532}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{83AC35DE-60BF-4EF1-BC5A-BA9A8AE990E3} = {48AA4909-D349-4433-A11E-FE74993D0CCE}
+		{EC75B15B-E764-4D31-BE22-C6FDC7FA9681} = {48AA4909-D349-4433-A11E-FE74993D0CCE}
+		{740D0E64-811F-4B91-80ED-1B34F0AE3DE7} = {48AA4909-D349-4433-A11E-FE74993D0CCE}
+		{99FC0CA1-6265-4D55-A735-F9B16438636F} = {EB7171E2-2D76-415A-997C-A0D12903A097}
+		{A550ACEB-CCF6-40FC-B253-AEA335C12532} = {D36AAE35-61DF-415E-AB0B-D99B6D93CD70}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A2A268C-629F-4CA9-B1CE-B8BDD319A412}
+	EndGlobalSection
+EndGlobal

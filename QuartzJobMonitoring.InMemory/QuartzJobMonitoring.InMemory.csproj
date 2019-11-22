@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ahmet KUCUKOGLU</Authors>
+    <Version>1.0.2</Version>
+    <Description>Monitoring for Quartz Scheduled Jobs</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuartzJobMonitoring.Shared" Version="1.0.2" />
+  </ItemGroup>
+
+</Project>

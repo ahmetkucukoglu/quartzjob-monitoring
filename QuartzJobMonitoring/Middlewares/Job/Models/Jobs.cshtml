@@ -1,0 +1,154 @@
+﻿@model List<QuartzJobMonitoring.JobResponse>
+
+@{
+    Layout = null;
+
+    var schedulePath = (Microsoft.AspNetCore.Http.PathString)ViewData["SchedulePath"];
+    var historyPath = (Microsoft.AspNetCore.Http.PathString)ViewData["HistoryPath"];
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+    <!-- ChartJs CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">
+
+    <title>Jobs</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                @if (Model != null)
+                {
+                    var length = 0;
+
+                    @for (int i = 0; i < Model.Count; i += 3)
+                    {
+                        var group = Model.GetRange(i, Math.Min(3, Model.Count - i));
+
+                        <div class="row">
+                            @foreach (var item in group)
+                            {
+                                <div class="col-md-4">
+                                    <div class="card card-cascade narrower">
+
+                                        <div style="margin-top: -1.25rem;margin-right: 4%;margin-left: 4%;border-radius: .25rem;box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);" class="view view-cascade overlay">
+                                            <div class="card-img-top blue-gradient p-2" style="color:#fff">
+                                                <canvas id="myChart_@(length)"></canvas>
+                                            </div>
+                                            <a>
+                                                <div class="mask rgba-white-slight"></div>
+                                            </a>
+                                        </div>
+
+                                        <div class="card-body card-body-cascade">
+                                            <h5 class="pink-text pb-2 pt-1">@item.Name</h5>
+
+                                            <a href="@(schedulePath + "?jobName=" + @item.Name)" class="card-link">Schedules</a>
+                                            <a href="@(historyPath + "?jobName=" + @item.Name)" class="card-link">Histories</a>
+
+                                        </div>
+
+                                        <div class="card-footer text-muted">
+                                            @(!string.IsNullOrEmpty(item.LastRun) ? item.LastRun : "-")
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                length++;
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+    <!-- ChartJs JavaScript-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+    <script>
+        var mod = JSON.parse('@Html.Raw(Json.Serialize(Model))');
+
+        for (var i = 0; i < mod.length; i++) {
+            console.log(mod[i].statistic.labels);
+            console.log(mod[i].statistic.series);
+
+            var ctx = document.getElementById('myChart_'+i).getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: mod[i].statistic.labels,
+                    datasets: [{
+                        data: mod[i].statistic.series,
+                        fill: true,
+                        backgroundColor: "rgba(220,220,220,0.2)",
+                        borderWidth: 2,
+                        borderColor: "rgba(220,220,220,1)",
+                        pointBorderColor: "rgba(220,220,220,1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(220,220,220,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontColor: "rgba(220,220,220,1)",
+                                fontSize: 10
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                fontColor: "rgba(220,220,220,1)",
+                                fontSize: 10,
+                                callback: function (label) {
+                                    var hours = Math.floor(label / (60 * 60 * 1000));
+                                    var divisor_for_minutes = label % (60 * 60 * 1000);
+                                    var minutes = Math.floor(divisor_for_minutes / 60 / 1000);
+                                    var divisor_for_seconds = divisor_for_minutes % (60 * 1000);
+                                    var seconds = Math.ceil(divisor_for_seconds / 1000);
+                                    var time = "";
+                                    if (hours > 0)
+                                        time += hours + "h";
+                                    if (minutes > 0)
+                                        time += minutes + "m";
+                                    if (seconds >= 0)
+                                        time += seconds + "s";
+                                    return time;
+                                }
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

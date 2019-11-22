@@ -1,0 +1,86 @@
+﻿@model List<QuartzJobMonitoring.ScheduleResponse>
+
+@{
+    Layout = null;
+
+    var jobPath = (Microsoft.AspNetCore.Http.PathString)ViewData["JobPath"];
+    var triggerPath = (Microsoft.AspNetCore.Http.PathString)ViewData["TriggerPath"];
+    var jobName = Model?.FirstOrDefault()?.JobName;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+
+    <title>@jobName Schedules</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="card card-cascade narrower">
+
+                    <div style="margin-top: -1.25rem;padding: 1.6rem 1rem;border-radius: .25rem;box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);" class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                        <div></div>
+
+                        <a href="" class="white-text mx-3">@jobName Schedules</a>
+
+                        <div>
+                            <a class="btn btn-primary btn-sm waves-effect" href="@jobPath" role="button">Return to Jobs</a>
+                        </div>
+                    </div>
+
+                    <div class="px-4">
+                        <div class="table-wrapper">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="th-lg">
+                                            Cron Description
+                                        </th>
+                                        <th class="th-lg">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @item.Cron?.Select((x) => x.Description).Aggregate((x, y) => x + ',' + y)
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-outline-primary btn-sm m-0 waves-effect" href="@(triggerPath + "?isRedirect=true&jobName=" + item.JobName)">Trigger</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+</body>
+</html>

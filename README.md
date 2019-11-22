@@ -1,5 +1,5 @@
 # quartzjob-monitoring
 Monitoring for Quartz Scheduled Jobs
 
-![](https://github.com/ahmetkucukoglu/quartzjob-monitoring/workflows/.NET%20Core/badge.svg)
+![](https://travis-ci.org/ahmetkucukoglu/quartzjob-monitoring.svg?branch=master)
 ![](https://img.shields.io/nuget/v/QuartzJobMonitoring)

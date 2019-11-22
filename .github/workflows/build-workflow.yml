@@ -22,14 +22,14 @@ jobs:
     - name: Pack Shared
       run: |
         dotnet pack QuartzJobMonitoring.Shared/QuartzJobMonitoring.Shared.csproj --output nupkgs
-        dotnet nuget push nupkgs/ -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        dotnet nuget push QuartzJobMonitoring.Shared/nupkgs/ -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
     
     - name: Pack QuartzJobMonitoring
       run: |
         dotnet pack QuartzJobMonitoring/QuartzJobMonitoring.csproj --output nupkgs
-        dotnet nuget push nupkgs/ -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        dotnet nuget push QuartzJobMonitoring/nupkgs/ -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
       
     - name: Pack InMemory
       run: |
         dotnet pack QuartzJobMonitoring.InMemory/QuartzJobMonitoring.InMemory.csproj --output nupkgs
-        dotnet nuget push nupkgs/ -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        dotnet nuget push QuartzJobMonitoring.InMemory/nupkgs/ -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json

@@ -6,6 +6,7 @@
     <Version>1.0.12</Version>
     <Description>Monitoring for Quartz Scheduled Jobs</Description>
     <RepositoryUrl>https://github.com/ahmetkucukoglu/quartzjob-monitoring</RepositoryUrl>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
